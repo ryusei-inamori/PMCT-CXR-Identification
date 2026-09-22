@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this repository in academic work, please cite the original Forensic Science International article."
+title: "PMCT-CXR-Identification"
+type: software
+authors:
+  - family-names: Inamori
+    given-names: Ryusei
+preferred-citation:
+  type: article
+  title: "Development of a deep learning–based model for personal identification using postmortem CT and antemortem chest x-rays"
+  authors:
+    - family-names: Inamori
+      given-names: Ryusei
+    - family-names: Kobayashi
+      given-names: Tomoya
+    - family-names: Kawasumi
+      given-names: Takaya
+    - family-names: Kanayama
+      given-names: Hidekazu
+    - family-names: Kim
+      given-names: Yeji
+    - family-names: Yoon
+      given-names: Yongsu
+    - family-names: Inaba
+      given-names: Yohei
+    - family-names: Usui
+      given-names: Akihito
+    - family-names: Takaya
+      given-names: Eichi
+    - family-names: Okamoto
+      given-names: Yoshikazu
+  journal: "Forensic Science International"
+  volume: 388
+  year: 2026
+  start: 113087
+  doi: "10.1016/j.forsciint.2026.113087"

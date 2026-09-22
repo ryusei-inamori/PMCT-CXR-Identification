@@ -1,0 +1,4 @@
+identity_id,image_path,exam_date,is_distractor
+ID0001,/path/to/cxr/ID0001_old.png,2010-01-10,0
+ID0001,/path/to/cxr/ID0001_near.png,2015-07-20,0
+DIST0001,/path/to/cxr/distractor.png,,1
