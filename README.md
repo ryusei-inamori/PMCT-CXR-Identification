@@ -1,5 +1,13 @@
 # PMCT-CXR-Identification
 
+
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/6db5a8ce-a612-4f9f-be8b-e35820c691b6" width="100%">
+</p>
+
+
+
 **Paper-compatible, post-publication reconstruction** of the pipeline described in:
 
 > Ryusei Inamori, Tomoya Kobayashi, Takaya Kawasumi, Hidekazu Kanayama, Yeji Kim, Yongsu Yoon, Yohei Inaba, Akihito Usui, Eichi Takaya, Yoshikazu Okamoto.  
