@@ -1,25 +1,50 @@
 # PMCT-CXR-Identification
 
+**AI-based forensic personal identification from postmortem CT and antemortem chest X-rays**
 
+[![Paper DOI](https://img.shields.io/badge/DOI-10.1016%2Fj.forsciint.2026.113087-blue)](https://doi.org/10.1016/j.forsciint.2026.113087)
+[![PubMed](https://img.shields.io/badge/PubMed-42543040-326599)](https://pubmed.ncbi.nlm.nih.gov/42543040/)
+[![Journal](https://img.shields.io/badge/Forensic%20Science%20International-388%20%282026%29-555555)](https://www.sciencedirect.com/science/article/pii/S0379073826002744)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+This repository provides a reproducible public implementation of the method reported by **Inamori et al. (2026)** for **one-to-many forensic personal identification** by matching a **postmortem CT (PMCT)-derived RaySum image** against a gallery of **antemortem chest X-rays (CXRs)**.
+
+The method is designed for candidate prioritization in large-scale forensic identification workflows, including **disaster victim identification (DVI)**.
+
+> **Published paper:** Ryusei Inamori et al. *Development of a deep learning–based model for personal identification using postmortem CT and antemortem chest x-rays.* **Forensic Science International**. 2026;388:113087.  
+> DOI: https://doi.org/10.1016/j.forsciint.2026.113087  
+> PubMed: https://pubmed.ncbi.nlm.nih.gov/42543040/
+>
+> **If this repository contributes to an academic study, please cite the original article as the primary scientific reference.**
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/6db5a8ce-a612-4f9f-be8b-e35820c691b6" width="100%">
+  <img src="https://github.com/user-attachments/assets/6db5a8ce-a612-4f9f-be8b-e35820c691b6" width="100%" alt="Overview of PMCT-to-CXR forensic personal identification workflow">
 </p>
 
+## At a glance
 
+- **Task:** 1:N cross-modal personal identification / image retrieval
+- **Query:** AP RaySum generated from PMCT, using the C7-to-L3 trunk region
+- **Gallery:** antemortem frontal CXRs, including **78,999 non-matching CXRs**
+- **Study cohort:** **1,385 deceased individuals**
+- **Model:** EfficientNet-B3 + AdaCos metric learning
+- **Embedding:** 1,280-D paper-compatible representation
+- **Best published result (all examinations):** **Top-1 83.0%, Top-5 90.6%, Top-10 93.2%, Top-20 95.2%, Top-50 97.5%**
+- **Intended role:** narrow large CXR galleries and prioritize candidate matches for subsequent forensic confirmation
 
-**Paper-compatible, post-publication reconstruction** of the pipeline described in:
+## Published identification performance
 
-> Ryusei Inamori, Tomoya Kobayashi, Takaya Kawasumi, Hidekazu Kanayama, Yeji Kim, Yongsu Yoon, Yohei Inaba, Akihito Usui, Eichi Takaya, Yoshikazu Okamoto.  
-> **Development of a deep learning–based model for personal identification using postmortem CT and antemortem chest x-rays.**  
-> *Forensic Science International*. 2026;388:113087.  
-> https://doi.org/10.1016/j.forsciint.2026.113087
+| Top-k | Oldest CXR | Nearest-date CXR | All examinations |
+|---:|---:|---:|---:|
+| Top-1 | 54.2% | 78.9% | **83.0%** |
+| Top-5 | 69.7% | 87.2% | **90.6%** |
+| Top-10 | 76.2% | 90.3% | **93.2%** |
+| Top-20 | 80.7% | 92.8% | **95.2%** |
+| Top-50 | 86.1% | 96.0% | **97.5%** |
 
-> **If this repository contributes to an academic study, please cite the FSI article above as the primary scientific reference.**
+The nearest-date CXR condition significantly outperformed the oldest-date condition at every evaluated threshold (all McNemar p < 0.001). The all-examinations condition contains a larger and variable number of true-match images and should therefore be interpreted as a realistic retrieval scenario rather than a strictly matched single-date comparison.
 
-## What this repository is
-
-This repository reorganizes archived research code and a surviving ChestX-ray14 pretraining checkpoint into a clean, reproducible public implementation. The core workflow is:
+## Method overview
 
 ```text
 PMCT DICOM
@@ -38,7 +63,9 @@ AM chest X-ray ----------
 Embeddings -> cosine retrieval -> Oldest / Nearest / All gallery evaluation -> Top-k
 ```
 
-The published study included 1,385 deceased individuals and 78,999 non-matching CXRs. The article reported Top-1 = 83.0% and Top-5 = 90.6% for the all-examinations setting.
+## Search keywords
+
+**Forensic imaging · forensic radiology · personal identification · disaster victim identification · DVI · postmortem CT · PMCT · chest X-ray · CXR · antemortem imaging · deep learning · metric learning · medical image retrieval · cross-modal retrieval · RaySum · forensic AI**
 
 ## Reproducibility status
 
@@ -64,7 +91,7 @@ See [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md) before using the code f
 Python 3.10+ is recommended.
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/PMCT-CXR-Identification.git
+git clone https://github.com/ryusei-inamori/PMCT-CXR-Identification.git
 cd PMCT-CXR-Identification
 python -m venv .venv
 source .venv/bin/activate
